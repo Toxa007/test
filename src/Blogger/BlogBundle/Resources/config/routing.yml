@@ -18,7 +18,7 @@ BloggerBlogBundle_contact:
          methods:  GET|POST
 
 BloggerBlogBundle_blog_show:
-    path:  /{id}
+    path:  /{id}/{slug}
     defaults: { _controller: "BloggerBlogBundle:Blog:show" }
     requirements:
         methods:  GET
@@ -30,3 +30,15 @@ BloggerBlogBundle_comment_create:
     requirements:
         methods:  POST
         blog_id: \d+
+
+BloggerBlogBundle_blog_create:
+    path: /blog/create
+    defaults: { _controller: "BloggerBlogBundle:Blog:create" }
+    requirements:
+        methods: POST
+
+BloggerBlogBundle_blog_new:
+    path:   /blog/new
+    defaults: { _controller: "BloggerBlogBundle:Blog:new" }
+    requirements:
+         methods:  GET

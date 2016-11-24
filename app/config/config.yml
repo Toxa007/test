@@ -65,3 +65,23 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+assetic:
+    bundles:    [BloggerBlogBundle]
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+        yui_css:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    mappings:
+        product_image:
+            uri_prefix:         /images/
+            upload_destination: '%kernel.root_dir%/../web/images/'
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
