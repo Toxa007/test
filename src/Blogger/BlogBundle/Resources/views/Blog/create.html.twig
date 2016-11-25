@@ -1,8 +1,11 @@
 {% extends 'BloggerBlogBundle::layout.html.twig' %}
 
 {% block title %}Add Post{% endblock%}
-
 {% block body %}
-    <h1>Add new post</h1>
-    {% include 'BloggerBlogBundle:Blog:form.html.twig' with { 'form': form } %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <h1>Add new post</h1>
+        {% include 'BloggerBlogBundle:Blog:form.html.twig' with { 'form': form } %}
+    {% else %}
+        Yor are not logged in! <A href="{{ path('fos_user_security_login') }}">Log in </a>
+    {% endif %}
 {% endblock %}
